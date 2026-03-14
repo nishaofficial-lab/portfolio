@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nisha Dandapat — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet"/>
+  <style>
+
+    /* ── RESET & BASE ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink:    #f472b6;
+      --purple:  #a855f7;
+      --peach:   #fb923c;
+      --yellow:  #fbbf24;
+      --bg:      #fff8f8;
+      --card:    #ffffff;
+      --text:    #2d2d2d;
+      --muted:   #888;
+      --border:  #f0e0f0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 48px;
+      background: rgba(255,248,248,0.85);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--pink); }
+
+    /* ── SECTIONS GENERAL ── */
+    section {
+      padding: 100px 48px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--purple);
+      background: #f3e8ff;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 900;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 100px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 60px;
+      width: 100%;
+    }
+    .hero-text { flex: 1; }
+    .hero-greeting {
+      font-size: 18px;
+      color: var(--pink);
+      font-weight: 700;
+      margin-bottom: 8px;
+      animation: fadeUp 0.6s ease both;
+    }
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 58px;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      animation: fadeUp 0.7s ease both;
+    }
+    .hero-name span {
+      background: linear-gradient(135deg, var(--pink), var(--purple), var(--peach));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-title {
+      font-size: 18px;
+      color: var(--muted);
+      margin-bottom: 28px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-desc {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #555;
+      max-width: 480px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.9s ease both;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      animation: fadeUp 1s ease both;
+    }
+    .btn-primary {
+      padding: 14px 28px;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 28px rgba(168,85,247,0.3);
+    }
+    .btn-secondary {
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--purple);
+      border: 2px solid var(--purple);
+      border-radius: 50px;
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Nunito', sans-serif;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-block;
+    }
+    .btn-secondary:hover {
+      background: var(--purple);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    /* ── PHOTO ── */
+    .hero-photo {
+      flex-shrink: 0;
+      animation: fadeUp 0.8s ease both;
+    }
+    .photo-frame {
+      width: 280px;
+      height: 280px;
+      border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%;
+      background: linear-gradient(135deg, #fce4ec, #f3e8ff, #fef3c7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      animation: morph 6s ease-in-out infinite;
+      overflow: hidden;
+      border: 4px solid white;
+      box-shadow: 0 20px 60px rgba(244,114,182,0.25);
+    }
+    @keyframes morph {
+      0%,100% { border-radius: 40% 60% 55% 45% / 45% 40% 60% 55%; }
+      33%      { border-radius: 55% 45% 40% 60% / 60% 55% 45% 40%; }
+      66%      { border-radius: 45% 55% 60% 40% / 40% 60% 55% 45%; }
+    }
+    .photo-frame img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+    .photo-placeholder {
+      text-align: center;
+      color: #c084fc;
+    }
+    .photo-placeholder .icon { font-size: 64px; margin-bottom: 8px; }
+    .photo-placeholder p { font-size: 13px; font-weight: 600; color: #a855f7; }
+
+    /* Floating badges */
+    .badge {
+      position: absolute;
+      background: white;
+      border-radius: 20px;
+      padding: 8px 14px;
+      font-size: 12px;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      animation: float 3s ease-in-out infinite;
+    }
+    .badge-1 { top: -10px; right: -20px; color: var(--pink); animation-delay: 0s; }
+    .badge-2 { bottom: 10px; left: -30px; color: var(--purple); animation-delay: 1s; }
+    .badge-3 { top: 50%; right: -40px; color: var(--peach); animation-delay: 2s; }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-8px); }
+    }
+    .photo-wrap { position: relative; display: inline-block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── ABOUT ── */
+    #about { padding-top: 60px; }
+    .about-inner {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-text { flex: 1; }
+    .about-text p {
+      font-size: 16px;
+      line-height: 1.9;
+      color: #555;
+      margin-bottom: 16px;
+    }
+    .about-stats {
+      display: flex;
+      gap: 24px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .stat-box {
+      text-align: center;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 20px 24px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .stat-box:hover { transform: translateY(-4px); border-color: var(--pink); }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--pink), var(--purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); font-weight: 600; margin-top: 4px; }
+
+    /* ── SKILLS ── */
+    #skills { background: linear-gradient(135deg, #fdf2f8, #f5f3ff); border-radius: 32px; }
+    .skills-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+    .skill-chip {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 50px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .skill-chip:hover {
+      transform: translateY(-3px);
+      border-color: var(--pink);
+      box-shadow: 0 8px 20px rgba(244,114,182,0.2);
+    }
+    .skill-chip .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+    .project-card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 24px;
+      padding: 28px;
+      transition: all 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      border-radius: 24px 24px 0 0;
+    }
+    .card-pink::before   { background: linear-gradient(90deg, var(--pink), var(--purple)); }
+    .card-purple::before { background: linear-gradient(90deg, var(--purple), var(--peach)); }
+    .card-peach::before  { background: linear-gradient(90deg, var(--peach), var(--yellow)); }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(244,114,182,0.15);
+      border-color: var(--pink);
+    }
+    .project-emoji { font-size: 36px; margin-bottom: 14px; }
+    .project-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .project-desc {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+    .tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: #f3e8ff;
+      color: var(--purple);
+    }
+    .project-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--pink);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: gap 0.2s;
+    }
+    .project-link:hover { gap: 8px; }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
+    #contact h2 { margin-bottom: 8px; }
+    #contact .sub {
+      color: var(--muted);
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+    .contact-cards {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .contact-card {
+      background: white;
+      border: 2px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 32px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+      min-width: 180px;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--pink);
+      box-shadow: 0 12px 32px rgba(244,114,182,0.15);
+    }
+    .contact-icon { font-size: 32px; margin-bottom: 8px; }
+    .contact-label { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+    .contact-value { font-size: 14px; font-weight: 700; margin-top: 4px; color: var(--purple); }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px;
+      font-size: 13px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { gap: 16px; }
+      section { padding: 80px 20px; }
+      .hero-inner { flex-direction: column-reverse; text-align: center; gap: 32px; }
+      .hero-name { font-size: 40px; }
+      .hero-btns { justify-content: center; }
+      .photo-frame { width: 200px; height: 200px; }
+      .about-inner { flex-direction: column; }
+      h2 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-logo">Nisha ✦</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="hero-greeting">👋 Hello, I'm</p>
+        <h1 class="hero-name">Nisha<br/><span>Dandapat</span></h1>
+        <p class="hero-title">B.Tech CSE Student & Aspiring Developer</p>
+        <p class="hero-desc">
+          I'm a final year Computer Science student from Kolkata,
+          passionate about building real things with technology —
+          from deep learning healthcare apps to fun web projects.
+        </p>
+        <div class="hero-btns">
+          <a href="#projects" class="btn-primary">View My Work 🚀</a>
+          <a href="#contact" class="btn-secondary">Get In Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-photo">
+        <div class="photo-wrap">
+          <div class="photo-frame">
+            <!--
+              HOW TO ADD YOUR PHOTO:
+              1. Save your photo in the same folder as this file
+              2. Name it "photo.jpg"
+              3. Delete the div below with class "photo-placeholder"
+              4. Uncomment this line:
+              <img src="photo.jpg" alt="Nisha Dandapat" />
+            -->
+            <div class="photo-placeholder">
+              <div class="icon">🌸</div>
+              <p>Add photo.jpg<br/>to this folder</p>
+            </div>
+          </div>
+          <div class="badge badge-1">✨ CSE Student</div>
+          <div class="badge badge-2">🐍 Python</div>
+          <div class="badge badge-3">💻 Developer</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <span class="section-tag">About Me</span>
+    <h2>A little bit<br/>about me 🌸</h2>
+    <div class="about-inner">
+      <div class="about-text">
+        <p>
+          I'm Nisha Dandapat, a final year B.Tech Computer Science student
+          at Techno International New Town, Kolkata, with a CGPA of 7.54.
+          I love combining technology with real-world impact.
+        </p>
+        <p>
+          My final year project, SafeStep, is an edge-based fall detection
+          system using deep learning and wearable sensors — built to help
+          healthcare applications monitor patient safety in real time.
+        </p>
+        <p>
+          Outside of tech, I'm passionate about photography 📷, reading books 📚,
+          learning new languages (currently Spanish! 🇪🇸), and actively
+          participating in social causes including regular blood donation 🩸.
+        </p>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-num">7.54</div>
+            <div class="stat-label">CGPA</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">2+</div>
+            <div class="stat-label">Projects</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-num">3</div>
+            <div class="stat-label">Languages</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <span class="section-tag">Skills</span>
+    <h2>What I work with 🛠️</h2>
+    <div class="skills-grid">
+      <div class="skill-chip"><span class="dot" style="background:#3b82f6"></span>Python</div>
+      <div class="skill-chip"><span class="dot" style="background:#f59e0b"></span>Java</div>
+      <div class="skill-chip"><span class="dot" style="background:#f97316"></span>HTML</div>
+      <div class="skill-chip"><span class="dot" style="background:#a855f7"></span>CSS</div>
+      <div class="skill-chip"><span class="dot" style="background:#eab308"></span>JavaScript</div>
+      <div class="skill-chip"><span class="dot" style="background:#10b981"></span>Deep Learning</div>
+      <div class="skill-chip"><span class="dot" style="background:#ec4899"></span>Git & GitHub</div>
+      <div class="skill-chip"><span class="dot" style="background:#6366f1"></span>Communication</div>
+      <div class="skill-chip"><span class="dot" style="background:#14b8a6"></span>Teamwork</div>
+      <div class="skill-chip"><span class="dot" style="background:#f43f5e"></span>Analytical Thinking</div>
+      <div class="skill-chip"><span class="dot" style="background:#8b5cf6"></span>Adaptability</div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <span class="section-tag">Projects</span>
+    <h2>Things I've built 💻</h2>
+    <div class="projects-grid">
+
+      <div class="project-card card-pink">
+        <div class="project-emoji">🩺</div>
+        <div class="project-title">SafeStep</div>
+        <div class="project-desc">
+          Edge-based fall detection system using wearable accelerometer
+          sensor data and deep learning models for real-time healthcare alerts.
+        </div>
+        <div class="project-tags">
+          <span class="tag">Python</span>
+          <span class="tag">Deep Learning</span>
+          <span class="tag">Healthcare</span>
+          <span class="tag">Final Year Project</span>
+        </div>
+        <a href="#" class="project-link">In Progress 🔄</a>
+      </div>
+
+      <div class="project-card card-purple">
+        <div class="project-emoji">✅</div>
+        <div class="project-title">TaskFlow To-Do App</div>
+        <div class="project-desc">
+          A task management web app with dark mode, real-time progress bar,
+          smooth animations, and localStorage so tasks never disappear.
+        </div>
+        <div class="project-tags">
+          <span class="tag">HTML</span>
+          <span class="tag">CSS</span>
+          <span class="tag">JavaScript</span>
+        </div>
+        <a href="https://nishaofficial-lab.github.io/todo-app"
+           target="_blank" class="project-link">View Live →</a>
+      </div>
+
+      <div class="project-card card-peach">
+        <div class="project-emoji">🌱</div>
+        <div class="project-title">More Coming Soon</div>
+        <div class="project-desc">
+          I'm building a new project every day — check back soon or
+          visit my GitHub to see the latest work!
+        </div>
+        <div class="project-tags">
+          <span class="tag">Daily Builds</span>
+          <span class="tag">Learning</span>
+        </div>
+        <a href="https://github.com/nishaofficial-lab"
+           target="_blank" class="project-link">See GitHub →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <span class="section-tag">Contact</span>
+    <h2>Let's connect! 💌</h2>
+    <p class="sub">I'm open to opportunities, collaborations, or just a friendly chat.</p>
+    <div class="contact-cards">
+      <a href="mailto:nisha.dandapat.n@gmail.com" class="contact-card">
+        <div class="contact-icon">📧</div>
+        <div class="contact-label">Email</div>
+        <div class="contact-value">nisha.dandapat.n<br/>@gmail.com</div>
+      </a>
+      <a href="https://linkedin.com/in/contactnishain" target="_blank" class="contact-card">
+        <div class="contact-icon">💼</div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">contactnishain</div>
+      </a>
+      <a href="https://github.com/nishaofficial-lab" target="_blank" class="contact-card">
+        <div class="contact-icon">🐙</div>
+        <div class="contact-label">GitHub</div>
+        <div class="contact-value">nishaofficial-lab</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Made with 💖 by Nisha Dandapat &nbsp;·&nbsp; Kolkata, India</p>
+  </footer>
+
+</body>
+</html>
